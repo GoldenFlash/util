@@ -23,3 +23,6 @@ function isPrimitive (value) {
 function isObject (obj) {
   return obj !== null && typeof obj === 'object'
 }
+function toRawType (value) {
+  return _toString.call(value).slice(8, -1)
+}

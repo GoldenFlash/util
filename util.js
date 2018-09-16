@@ -26,3 +26,6 @@ function isObject (obj) {
 function toRawType (value) {
   return _toString.call(value).slice(8, -1)
 }
+function isPlainObject (obj) {
+  return _toString.call(obj) === '[object Object]'
+}

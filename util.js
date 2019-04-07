@@ -29,3 +29,13 @@ function toRawType (value) {
 function isPlainObject (obj) {
   return _toString.call(obj) === '[object Object]'
 }
+// 数组相邻项去重
+function adjacent_unique (arr){
+    // let Arr = arr.sort()
+    let b = []
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] !== arr[i + 1]) {
+        b.push(arr[i])
+      }
+    }
+}

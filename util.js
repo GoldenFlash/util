@@ -39,3 +39,20 @@ function adjacent_unique (arr){
       }
     }
 }
+function getDaysOfMonth (date){
+  var d = new Date(date)
+  var year = d.getFullYear()
+  var month = d.getMonth()
+  return new Date(year,month,0).getDate()
+}
+
+function IsDate(sm, mystring) {
+  var reg = /^(\d{4})-(\d{2})-(\d{2})$/;
+  var str = mystring;
+  var arr = reg.exec(str);
+  if (str == "") return true;
+  if (!reg.test(str) && RegExp.$2 <= 12 && RegExp.$3 <= 31) {
+    
+  }
+  return true;
+}

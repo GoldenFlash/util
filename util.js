@@ -39,13 +39,14 @@ function adjacent_unique (arr){
       }
     }
 }
+// 获取某月天数
 function getDaysOfMonth (date){
   var d = new Date(date)
   var year = d.getFullYear()
   var month = d.getMonth()
   return new Date(year,month,0).getDate()
 }
-
+// 判断日期是否有效
 function IsDate(sm, mystring) {
   var reg = /^(\d{4})-(\d{2})-(\d{2})$/;
   var str = mystring;

@@ -39,6 +39,28 @@ function adjacent_unique (arr){
       }
     }
 }
+// hash去重 无法引用类型去重
+function arrUnique () {
+  var hash = {}, result = [], item;
+  for (var i = 0; i < this.length; i++) {
+    item = this[i];
+    if (!hash[item]) {
+      hash[item] = true;
+      result.push(item);
+    }
+  }
+  return result;
+};
+// 根据数组中对象的某个属性去重
+function arrayUniqueByName(arr, name) {
+  var hash = {};
+  return arr.reduce(function (item, next) {
+    hash[next[name]] ? '' : hash[next[name]] = true && item.push(next);
+    return item;
+  }, []);
+}
+
+
 // 获取某月天数
 function getDaysOfMonth (date){
   var d = new Date(date)

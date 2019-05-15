@@ -79,7 +79,8 @@ function IsDate(sm, mystring) {
   }
   return true;
 }
-function dateFormat (date, fmt) { //author: meizz   
+function dateFormat(date, fmt = "yyyy-MM-dd hh:mm:ss") { //author: meizz   
+  date = new Date(date)
   var o = {
     "M+": date.getMonth() + 1,                 //月份   
     "d+": date.getDate(),                    //日   

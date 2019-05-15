@@ -97,3 +97,17 @@ function dateFormat(date, fmt = "yyyy-MM-dd hh:mm:ss") { //author: meizz
       fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
   return fmt;
 }
+//在XMLHttprequest中对象转表单编码
+function encodeFormData(data){
+  if(!data){return ""}
+  var pairs = []
+  for(var name in data){
+    if(!data.hasOwnProperty(name)) continue
+    if(typeof data[name] === "function" ) continue
+    var value = data[name].toString()
+    name = encodeURIComponent(name.replace("%20","+"))
+    value = encodeURIComponent(value.replace("%20","+"))
+    pairs.push(name + "=" + value)
+  }
+  return pairs.join("&")
+}

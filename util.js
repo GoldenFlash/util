@@ -111,3 +111,41 @@ function encodeFormData(data){
   }
   return pairs.join("&")
 }
+
+//判断两个值是否相等（对基本类型的值的准确判断）
+function objectIs(x, y) {
+  if (x === y) {
+    //修复 -0===+0 返回true 的情况（期望值为false）
+    return x !== 0 || y !== 0 || 1 / x === 1 / y;
+  } else {
+    // 修复NaN===NaN 返回false 的情况（期望值为true）
+    return x !== x && y !== y;
+  }
+}
+
+//对象浅比较相等返回 true 不相等返回false
+function shallowEqual(objA, objB) {
+  if (objectIs(objA, objB)) return true;
+
+  if (
+    typeof objA !== "object" ||
+    objA === null ||
+    typeof objB !== "object" ||
+    objB === null
+  ) {
+    return false;
+  }
+
+  const keysA = Object.keys(objA);
+  const keysB = Object.keys(objB);
+
+  if (keysA.length !== keysB.length) return false;
+  const hasOwn = Object.prototype.hasOwnProperty;
+
+  for (let i = 0; i < keysA.length; i++) {
+    if (!hasOwn.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
+      return false;
+    }
+  }
+  return true;
+}
